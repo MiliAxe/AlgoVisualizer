@@ -22,11 +22,15 @@ private:
 
 
 public:
+    bool isRunning;
+    
     std::unique_ptr<sf::RenderWindow> window;
 
     Sorter *sorterPtr;
 
     void drawBuffer();
+
+    void renderBuffer();
 
     App();
 

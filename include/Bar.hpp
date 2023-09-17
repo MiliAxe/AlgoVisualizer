@@ -26,5 +26,9 @@ public:
 
 //    sf::RectangleShape getShape() const;
 
+    void highlight(sf::Color color);
+
+    void temporaryHighlight(sf::Color color);
+
     explicit Bar(int index);
 };

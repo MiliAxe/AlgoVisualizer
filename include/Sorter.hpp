@@ -22,6 +22,8 @@ public:
     void populate(int barCount);
 
     void swapBar(int index1, int index2);
+    
+    void checkIfSortedAnimation(App &app); 
 
     void sort(); // TODO: Add the algorithm as argument
 

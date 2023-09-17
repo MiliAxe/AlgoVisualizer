@@ -17,3 +17,14 @@ public:
 
     void sort(App &app) override;
 };
+
+class QuickSort : public SortAlgorithm {
+public:
+    QuickSort(Sorter *sortPtr);
+
+    void sort(App &app) override;
+
+    int partition(std::vector<Bar> &values, int left, int right, App &app);
+
+    void quickSort(std::vector<Bar> &values, int left, int right, App &app);
+};

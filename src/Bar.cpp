@@ -2,6 +2,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <config.hpp>
+#include<thread>
 
 sf::Vector2f Bar::calculateSize(int index) {
 
@@ -35,6 +36,16 @@ Bar::Bar(int index) : value(index) {
     this->rectangle = sf::RectangleShape(size);
     this->setOriginToBottomLeft();
     this->setPosition(position);
+}
+
+void Bar::highlight(sf::Color color) {
+    this->rectangle.setFillColor(color);
+}
+
+void Bar::temporaryHighlight(sf::Color color) {
+    this->highlight(color);
+    // std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    this->highlight(color);
 }
 
 
