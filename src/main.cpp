@@ -1,13 +1,17 @@
 #include <App.hpp>
 #include <Sorter.hpp>
-#include <config.hpp>
+#include <SortAlgorithms.hpp>
+#include <thread>
 
-int main (int argc, char *argv[]) {
+// TODO: Add one render only method
+
+int main(int argc, char *argv[]) {
     App app = App();
     Sorter sorter;
-    sorter.populate(BAR_COUNT);
-    sorter.swapBar(1, 3);
-    sorter.drawBars(app);
-	app.run();
-	return 0;
+    app.sorterPtr = &sorter;
+    sorter.shuffleBars();
+    BubbleSort sortAlgo(&sorter);
+    sortAlgo.sort(app);
+    app.run();
+    return 0;
 }

@@ -30,6 +30,8 @@ add_executable(AlgoVisualizer
         src/App.cpp
         src/main.cpp
         src/Bar.cpp
+        include/SortAlgorithms.hpp
+        src/SortAlgorithms.cpp
 )
 target_sources(AlgoVisualizer PRIVATE src/main.cpp src/Bar.cpp src/App.cpp)
 target_include_directories(AlgoVisualizer PRIVATE "${PROJECT_BINARY_DIR}"
