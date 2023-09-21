@@ -1,34 +1,33 @@
 #pragma once
 
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/System/Vector2.hpp>
 
 class Bar : public sf::Drawable {
 private:
-    sf::Vector2f size;
-    sf::Vector2f position;
+  sf::Vector2f size;
+  sf::Vector2f position;
+  sf::RectangleShape rectangle;
 
-    static sf::Vector2f calculateSize(int index);
+  static sf::Vector2f calculateSize(int index);
 
-    static sf::Vector2f calculatePosition(int index);
+  static sf::Vector2f calculatePosition(int index);
 
-    void setOriginToBottomLeft();
-
+  void setOriginToBottomLeft();
 
 public:
-    int value;
-    sf::RectangleShape rectangle;
+  int value;
 
-    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+  void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
-    void setPosition(sf::Vector2f newPosition);
+  void setPosition(sf::Vector2f newPosition);
 
-//    sf::RectangleShape getShape() const;
+  void highlight(sf::Color color);
 
-    void highlight(sf::Color color);
+  void temporaryHighlight(sf::Color color);
 
-    void temporaryHighlight(sf::Color color);
+  explicit Bar(int index);
 
-    explicit Bar(int index);
+  sf::RectangleShape *getShape();
 };

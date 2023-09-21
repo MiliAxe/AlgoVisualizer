@@ -1,31 +1,31 @@
 #pragma once
 
 #include <Bar.hpp>
-#include <App.hpp>
 
+#include <SFML/Graphics.hpp>
 #include <SFML/Window/Window.hpp>
-#include <vector>
-#include <random>
 #include <algorithm>
 #include <chrono>
+#include <random>
+#include <vector>
+#include <Utils.hpp>
 
-//class App;
-
-class Sorter {
+class Sorter : public ISorter {
 public:
-    std::vector<Bar> bars;
+  std::vector<Bar> bars;
 
-    Sorter();
+  Sorter();
 
-    void shuffleBars();
+  void shuffleBars();
 
-    void populate(int barCount);
+  void populate(int barCount);
 
-    void swapBar(int index1, int index2);
-    
-    void checkIfSortedAnimation(App &app); 
+  void swapBar(int index1, int index2);
 
-    void sort(); // TODO: Add the algorithm as argument
+  void checkIfSortedAnimation();
 
-    void drawBars(App &app);
+  // void sort(SortAlgorithm &algorithm,
+  //           sf::RenderWindow &window); // TODO: Add the algorithm as argument
+
+  void drawBars(sf::RenderWindow &window) override;
 };

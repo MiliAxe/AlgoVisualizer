@@ -36,6 +36,8 @@ Bar::Bar(int index) : value(index) {
     this->rectangle = sf::RectangleShape(size);
     this->setOriginToBottomLeft();
     this->setPosition(position);
+    // this->rectangle.setOutlineColor(BAR_OUTLINE_COLOR);
+    // this->rectangle.setOutlineThickness(1);
 }
 
 void Bar::highlight(sf::Color color) {
@@ -44,9 +46,8 @@ void Bar::highlight(sf::Color color) {
 
 void Bar::temporaryHighlight(sf::Color color) {
     this->highlight(color);
-    // std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
     this->highlight(color);
 }
 
-
-//sf::RectangleShape Bar::getShape() const { return this->rectangle; }
+sf::RectangleShape* Bar::getShape()  { return &this->rectangle; }

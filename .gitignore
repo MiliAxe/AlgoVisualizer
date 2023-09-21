@@ -1,0 +1,102 @@
+# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
+# End of https://www.toptal.com/developers/gitignore/api/c++,cmake
+.cache/clangd/index/App.cpp.F38F981F8C3957A3.idx
+.cache/clangd/index/App.hpp.94AEC3563AB55801.idx
+.cache/clangd/index/Bar.cpp.40E6922C207381D5.idx
+.cache/clangd/index/Bar.hpp.8F4FDBAEE2E8DC00.idx
+.cache/clangd/index/config.hpp.B5B5783B6C33FDDA.idx
+.cache/clangd/index/main.cpp.49BAA5C9BC08DB5E.idx
+.cache/clangd/index/SortAlgorithms.cpp.EFD91C05B10E1740.idx
+.cache/clangd/index/SortAlgorithms.hpp.98CFDE8FDF9D1EA0.idx
+.cache/clangd/index/Sorter.cpp.04A1C7E5E76D1A0E.idx
+.cache/clangd/index/Sorter.hpp.1656FC73899F65EF.idx
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
+build/.ninja_deps
+build/.ninja_log
+build/AlgoVisualizer
+build/build.ninja
+build/.cmake/api/v1/query/client-vscode/query.json
+build/.cmake/api/v1/reply/cache-v2-e5df4a5a0c49a4f7c8ae.json
+build/.cmake/api/v1/reply/cmakeFiles-v1-82b89d2ab60f6adcdb90.json
+build/.cmake/api/v1/reply/codemodel-v2-8b34c44fba381e8fcddf.json
+build/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json
+build/.cmake/api/v1/reply/index-2023-09-17T12-12-49-0050.json
+build/.cmake/api/v1/reply/target-AlgoVisualizer-Debug-453cb2cb1a850ba1d2c7.json
+build/.cmake/api/v1/reply/toolchains-v1-3a45e23eeb554008254f.json
+.cache/clangd/index/QuickSort.cpp.29F8CAB4EFF40BF5.idx
+.cache/clangd/index/QuickSort.hpp.7A28C26EB7E9F09D.idx
+.cache/clangd/index/SortAlgorithm.cpp.FB10D0ABDBE3762A.idx
+.cache/clangd/index/SortAlgorithm.hpp.4170D03CBB8DB5F5.idx
+.cache/clangd/index/Utils.hpp.1705DFF03EEC5851.idx
+.cmake/api/v1/query/cmakeFiles-v1
+.cmake/api/v1/query/codemodel-v2
+.cmake/api/v1/reply/cmakeFiles-v1-bd28ba314aded6d1e917.json
+.cmake/api/v1/reply/codemodel-v2-25c3e087f1879f7c7389.json
+.cmake/api/v1/reply/directory-_deps.argparse-build-Debug-708af4e5c3e37690e654.json
+.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json
+.cmake/api/v1/reply/index-2023-09-21T23-08-23-0266.json
+.cmake/api/v1/reply/target-AlgoVisualizer-Debug-ff87d3ea9c6971997bd0.json
+build/CPackConfig.cmake
+build/CPackSourceConfig.cmake
+build/.cmake/api/v1/query/cmakeFiles-v1
+build/.cmake/api/v1/query/codemodel-v2
+build/.cmake/api/v1/reply/cmakeFiles-v1-309ea1496f2fb0f384aa.json
+build/.cmake/api/v1/reply/codemodel-v2-58bbe89c83347fbe84fa.json
+build/.cmake/api/v1/reply/directory-_deps.argparse-build-Debug-427cc7237160d8cec157.json
+build/.cmake/api/v1/reply/index-2023-09-21T23-09-50-0438.json
+build/.cmake/api/v1/reply/target-AlgoVisualizer-Debug-5e5fbfe37a00cb891f4c.json

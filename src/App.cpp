@@ -1,79 +1,64 @@
 #include <App.hpp>
-#include <Sorter.hpp>
-
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Window/Keyboard.hpp>
-#include <SFML/Window/VideoMode.hpp>
-#include <config.hpp>
-#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window/Window.hpp>
 
 void App::initWindow()
 {
-    this->window = std::make_unique<sf::RenderWindow>(
-        sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "My sfml program");
+  window = new sf::RenderWindow(
+      sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "My sfml program", sf::Style::Default);
+  window->setVerticalSyncEnabled(true);
+  window->setFramerateLimit(60);
 }
 
-App::App()
-{
-    initWindow();
-}
+App::App() { initWindow(); }
 
 void App::pollEvent()
 {
-    while (window->pollEvent(this->event))
+  while (window->pollEvent(this->event))
+  {
+    switch (event.type)
     {
-        switch (event.type)
-        {
-        case sf::Event::KeyPressed:
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) &&
-                sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
-            {
-                window->close();
-                this->isRunning = false;
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            {
-                sorterPtr->shuffleBars();
-                sorterPtr->drawBars(*this);
-            }
-        }
-        default:
-            break;
-        }
-    }
-}
-
-void App::drawBuffer()
-{
-    for (const auto &obj : barBuffer)
+    case sf::Event::KeyPressed:
     {
-        window->draw(obj);
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) &&
+          sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+      {
+        window->close();
+        this->isRunning = false;
+      }
+      // if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+      //   sorterPtr->shuffleBars();
+      //   sorterPtr->drawBars(*this);
+      // }
     }
+    default:
+      break;
+    }
+  }
 }
 
-void App::addToBuffer(Bar &obj)
+void App::drawBuffer(ISorter *sorterPtr)
 {
-    this->barBuffer.push_back(obj);
+  sorterPtr->drawBars(*window);
 }
 
-void App::clearBuffer()
-{
-    this->barBuffer.clear();
-}
+// void App::addToBuffer(Bar &obj) { this->barBuffer.push_back(obj); }
+
+// void App::clearBuffer() { this->barBuffer.clear(); }
 
 void App::renderBuffer()
 {
-    pollEvent();
-    window->clear();
-    drawBuffer();
-    window->display();
+  pollEvent();
+  window->clear();
+  drawBuffer(sorterPtr);
+  window->display();
 }
 
-void App::run()
+void App::run(std::mutex &windowMutex)
 {
-    while (window->isOpen())
-    {
-        renderBuffer();
-    }
+  while (window->isOpen())
+  {
+    // std::lock_guard<std::mutex> lock(windowMutex);
+    renderBuffer();
+  }
 }

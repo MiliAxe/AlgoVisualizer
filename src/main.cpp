@@ -1,23 +1,28 @@
+#include <Algorithms/QuickSort.hpp>
 #include <App.hpp>
 #include <Sorter.hpp>
-#include <SortAlgorithms.hpp>
+#include <mutex>
 #include <thread>
 
-// TODO: Add one render only method
+int main(int argc, char *argv[]) {
+  Sorter sorter;
+  sorter.shuffleBars();
 
-int main(int argc, char *argv[])
-{
+  std::mutex windowMutex;
+
+  std::thread sortThread([&]() {
+    QuickSort sortAlgo(&sorter, &windowMutex);
+    sortAlgo.sort();
+  });
+
+  std::thread renderingThread([&]() {
     App app = App();
-    app.isRunning = true;
-    Sorter sorter;
     app.sorterPtr = &sorter;
-    sorter.shuffleBars();
-    sorter.drawBars(app);
+    app.isRunning = true;
+    app.run(windowMutex);
+  });
 
-    QuickSort sortAlgo(&sorter);
-    sortAlgo.sort(app);
-
-    app.run();
-
-    return 0;
+  renderingThread.join();
+  sortThread.join();
+  return 0;
 }

@@ -1,44 +1,39 @@
 #pragma once
 
-//#include <Sorter.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Window.hpp>
+#include <config.hpp>
+#include <Bar.hpp>
 #include <memory>
-
-class Sorter;
-
-class Bar;
+#include <mutex>
+#include <Utils.hpp>
 
 class App {
 private:
-    sf::Event event;
-    std::vector<Bar> barBuffer;
+  sf::Event event;
+  std::vector<Bar> barBuffer;
 
-    void parseArguments();
+  void parseArguments();
 
-    void initWindow();
-
+  void initWindow();
 
 public:
-    bool isRunning;
-    
-    std::unique_ptr<sf::RenderWindow> window;
+  App();
 
-    Sorter *sorterPtr;
+  sf::RenderWindow *window;
+  bool isRunning;
 
-    void drawBuffer();
+  ISorter *sorterPtr;
 
-    void renderBuffer();
+  void drawBuffer(ISorter *sorterPtr);
 
-    App();
+  void renderBuffer();
 
-    void clearBuffer();
+  // void clearBuffer();
 
-    void pollEvent();
+  void pollEvent();
 
-    void addToBuffer(Bar &obj);
+  // void addToBuffer(Bar &obj);
 
-    void run();
+  void run(std::mutex &windowMutex);
 };
