@@ -1,7 +1,19 @@
-#define WINDOW_HEIGHT 600
-#define WINDOW_WIDTH 800
-#define BAR_COUNT 100
-#define SORT_DELAY 10
-#define BAR_COLOR sf::Color::White
-#define BAR_HIGHLIGHT_COLOR sf::Color::Red
-#define BAR_OUTLINE_COLOR sf::Color::Black
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
+
+#include <SFML/Graphics/Color.hpp>
+
+namespace config
+{
+    extern sf::Color BAR_COLOR;
+    extern sf::Color BAR_HIGHLIGHT_COLOR;
+    extern sf::Color BAR_OUTLINE_COLOR;
+    extern int BAR_OUTLINE_THICKNESS;
+
+    extern int WINDOW_HEIGHT;
+    extern int WINDOW_WIDTH;
+    extern int BAR_COUNT;
+    extern int SORT_DELAY;
+}
+
+#endif // CONFIG_HPP

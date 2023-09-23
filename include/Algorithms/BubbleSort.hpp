@@ -5,5 +5,5 @@ class BubbleSort : public SortAlgorithm {
 public:
   BubbleSort(Sorter *sortPtr);
 
-  void sort(App &app) override;
+  void sort() override;
 };

@@ -1,19 +1,15 @@
 #include <Bar.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <config.hpp>
-#include<thread>
 
 sf::Vector2f Bar::calculateSize(int index) {
 
-    sf::Vector2f tempRectSize((float) WINDOW_WIDTH / BAR_COUNT,
-                              (float) (index + 1) * WINDOW_HEIGHT / BAR_COUNT);
+    sf::Vector2f tempRectSize((float) config::WINDOW_WIDTH / config::BAR_COUNT,
+                              (float) (index + 1) * config::WINDOW_HEIGHT / config::BAR_COUNT);
     return tempRectSize;
 }
 
 sf::Vector2f Bar::calculatePosition(int index) {
-    sf::Vector2f tempPosition((float) index * WINDOW_WIDTH / BAR_COUNT,
-                              WINDOW_HEIGHT);
+    sf::Vector2f tempPosition((float) index * config::WINDOW_WIDTH / config::BAR_COUNT,
+                              config::WINDOW_HEIGHT);
     return tempPosition;
 }
 
@@ -34,10 +30,11 @@ Bar::Bar(int index) : value(index) {
     size = Bar::calculateSize(index);
 
     this->rectangle = sf::RectangleShape(size);
+    this->rectangle.setFillColor(config::BAR_COLOR);
+    this->rectangle.setOutlineColor(config::BAR_OUTLINE_COLOR);
+    this->rectangle.setOutlineThickness(config::BAR_OUTLINE_THICKNESS);
     this->setOriginToBottomLeft();
     this->setPosition(position);
-    // this->rectangle.setOutlineColor(BAR_OUTLINE_COLOR);
-    // this->rectangle.setOutlineThickness(1);
 }
 
 void Bar::highlight(sf::Color color) {

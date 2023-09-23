@@ -2,7 +2,8 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/System/Vector2.hpp>
+#include <config.hpp>
+#include <thread>
 
 class Bar : public sf::Drawable {
 private:

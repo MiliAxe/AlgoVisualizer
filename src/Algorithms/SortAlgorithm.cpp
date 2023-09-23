@@ -4,5 +4,5 @@
 
 void SortAlgorithm::resetHighlight(Bar &bar) {
   std::this_thread::sleep_for(std::chrono::milliseconds(50));
-  bar.highlight(BAR_COLOR); // Assuming sf::Color::White represents white
+  bar.highlight(config::BAR_COLOR);
 }

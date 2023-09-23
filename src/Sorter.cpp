@@ -1,7 +1,5 @@
-#include <SFML/Graphics.hpp>
 #include <Sorter.hpp>
 #include <config.hpp>
-#include <thread>
 
 void Sorter::populate(int barCount) {
   for (int i = 0; i < barCount; i++) {
@@ -27,7 +25,7 @@ void Sorter::swapBar(int index1, int index2) {
   std::swap(bars[index1], bars[index2]);
 }
 
-Sorter::Sorter() { populate(BAR_COUNT); }
+Sorter::Sorter() { populate(config::BAR_COUNT); }
 
 void Sorter::shuffleBars() {
   auto seed =
@@ -35,7 +33,7 @@ void Sorter::shuffleBars() {
   auto randomEngine = std::default_random_engine{seed};
   std::uniform_int_distribution<int> intDistribution(0, (int)bars.size() - 1);
 
-  for (int i = 0; i < BAR_COUNT * 2; ++i) {
+  for (int i = 0; i < config::BAR_COUNT * 2; ++i) {
     swapBar(intDistribution(randomEngine), intDistribution(randomEngine));
   }
 }

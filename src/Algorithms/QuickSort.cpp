@@ -1,12 +1,13 @@
 #include <Algorithms/QuickSort.hpp>
 // #include <Algorithms/SortAlgorithm.hpp>
 #include <config.hpp>
+#include <mutex>
 #include <thread>
 
-QuickSort::QuickSort(Sorter *sortPtr,std::mutex *windowMutex)
+QuickSort::QuickSort(Sorter *sortPtr)
 {
   this->sorterPtr = sortPtr;
-  this->windowMutex = windowMutex;
+  // this->windowMutex = windowMutex;
 }
 
 
@@ -27,14 +28,15 @@ int QuickSort::partition(int left, int right)
     }
     if (i <= j)
     {
-      sorterPtr->bars[i].highlight(BAR_HIGHLIGHT_COLOR);
-      sorterPtr->bars[j].highlight(BAR_HIGHLIGHT_COLOR);
+      // std::lock_guard<std::mutex> lock(*windowMutex);
+      sorterPtr->bars[i].highlight(config::BAR_HIGHLIGHT_COLOR);
+      sorterPtr->bars[j].highlight(config::BAR_HIGHLIGHT_COLOR);
       sorterPtr->swapBar(j, i);
 
-      std::this_thread::sleep_for(std::chrono::milliseconds(SORT_DELAY));
+      std::this_thread::sleep_for(std::chrono::milliseconds(config::SORT_DELAY));
 
-      sorterPtr->bars[i].highlight(BAR_COLOR);
-      sorterPtr->bars[j].highlight(BAR_COLOR);
+      sorterPtr->bars[i].highlight(config::BAR_COLOR);
+      sorterPtr->bars[j].highlight(config::BAR_COLOR);
       i++;
       j--;
     }

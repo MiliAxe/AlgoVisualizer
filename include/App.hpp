@@ -1,14 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Window/Window.hpp>
-#include <config.hpp>
 #include <Bar.hpp>
-#include <memory>
-#include <mutex>
 #include <Utils.hpp>
 
-class App {
+class App
+{
 private:
   sf::Event event;
   std::vector<Bar> barBuffer;
@@ -35,5 +32,5 @@ public:
 
   // void addToBuffer(Bar &obj);
 
-  void run(std::mutex &windowMutex);
+  void run();
 };

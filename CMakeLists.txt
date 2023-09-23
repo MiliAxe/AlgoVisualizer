@@ -34,7 +34,9 @@ target_sources(AlgoVisualizer PRIVATE
         src/App.cpp
         src/Bar.cpp
         src/Sorter.cpp
+	src/Utils.cpp
         src/Algorithms/QuickSort.cpp
+        src/Algorithms/BubbleSort.cpp
         src/Algorithms/SortAlgorithm.cpp)
 
 target_include_directories(AlgoVisualizer PRIVATE "${PROJECT_BINARY_DIR}"

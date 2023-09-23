@@ -4,7 +4,7 @@
 class QuickSort : public SortAlgorithm
 {
 public:
-  QuickSort(Sorter *sortPtr, std::mutex *windowMutex);
+  QuickSort(Sorter *sortPtr);
 
   void sort() override;
 

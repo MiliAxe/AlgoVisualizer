@@ -1,13 +1,9 @@
-#pragma once
+#ifndef SORTER_HPP
+#define SORTER_HPP
 
 #include <Bar.hpp>
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Window/Window.hpp>
-#include <algorithm>
 #include <chrono>
 #include <random>
-#include <vector>
 #include <Utils.hpp>
 
 class Sorter : public ISorter {
@@ -28,4 +24,8 @@ public:
   //           sf::RenderWindow &window); // TODO: Add the algorithm as argument
 
   void drawBars(sf::RenderWindow &window) override;
+  
+  // void operator()();
 };
+
+#endif // SORTER_HPP
