@@ -9,7 +9,7 @@ class SortAlgorithm
 {
 protected:
   Sorter *sorterPtr;
-  // std::mutex *windowMutex;
+  std::mutex *windowMutex;
   static void resetHighlight(Bar &bar);
 
 public:

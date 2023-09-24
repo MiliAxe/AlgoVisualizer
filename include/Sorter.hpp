@@ -1,5 +1,4 @@
-#ifndef SORTER_HPP
-#define SORTER_HPP
+#pragma once
 
 #include <Bar.hpp>
 #include <chrono>
@@ -20,12 +19,12 @@ public:
 
   void checkIfSortedAnimation();
 
-  // void sort(SortAlgorithm &algorithm,
-  //           sf::RenderWindow &window); // TODO: Add the algorithm as argument
-
   void drawBars(sf::RenderWindow &window) override;
   
-  // void operator()();
+  // Useful for Algorithms that don't use swapBar and directly replace the value
+  void replaceBar(int value, int index);
+  void copyBarToEnd(int index);
+  // The rest of the bars can be used as a cache until the end of the sorting proccess
+  void clearBarCache();
+  
 };
-
-#endif // SORTER_HPP

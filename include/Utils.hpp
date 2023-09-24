@@ -1,5 +1,4 @@
-#ifndef UTILS_HPP
-#define UTILS_HPP
+#pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
@@ -9,5 +8,3 @@ public:
 };
 
 long hexStringToLong(std::string hexString);
-
-#endif // UTILS_HPP

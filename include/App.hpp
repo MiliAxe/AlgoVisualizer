@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <Bar.hpp>
 #include <Utils.hpp>
+#include <mutex>
 
 class App
 {
@@ -18,6 +19,7 @@ public:
   App();
 
   sf::RenderWindow *window;
+  std::mutex *windowMutex;
   bool isRunning;
 
   ISorter *sorterPtr;
@@ -26,11 +28,7 @@ public:
 
   void renderBuffer();
 
-  // void clearBuffer();
-
   void pollEvent();
-
-  // void addToBuffer(Bar &obj);
 
   void run();
 };

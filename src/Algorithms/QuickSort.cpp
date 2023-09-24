@@ -4,12 +4,11 @@
 #include <mutex>
 #include <thread>
 
-QuickSort::QuickSort(Sorter *sortPtr)
+QuickSort::QuickSort(Sorter *sortPtr, std::mutex *windowMutex)
 {
   this->sorterPtr = sortPtr;
-  // this->windowMutex = windowMutex;
+  this->windowMutex = windowMutex;
 }
-
 
 int QuickSort::partition(int left, int right)
 {
@@ -28,10 +27,11 @@ int QuickSort::partition(int left, int right)
     }
     if (i <= j)
     {
-      // std::lock_guard<std::mutex> lock(*windowMutex);
+      windowMutex->lock();
       sorterPtr->bars[i].highlight(config::BAR_HIGHLIGHT_COLOR);
       sorterPtr->bars[j].highlight(config::BAR_HIGHLIGHT_COLOR);
       sorterPtr->swapBar(j, i);
+      windowMutex->unlock();
 
       std::this_thread::sleep_for(std::chrono::milliseconds(config::SORT_DELAY));
 

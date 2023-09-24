@@ -51,3 +51,19 @@ void Sorter::checkIfSortedAnimation() {
     // drawBars(window);
   }
 }
+
+void Sorter::replaceBar(int value, int index) {
+  Bar tempBar(value);
+  tempBar.setPosition(index);
+  bars[index] = tempBar;
+}
+
+void Sorter::copyBarToEnd(int index) {
+  Bar tempBar(bars[index].value);
+  tempBar.setPosition(index);
+  bars.push_back(tempBar);
+}
+
+void Sorter::clearBarCache() {
+  bars.erase(bars.begin() + config::BAR_COUNT, bars.end());
+}

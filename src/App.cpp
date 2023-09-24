@@ -1,4 +1,5 @@
 #include <App.hpp>
+#include <mutex>
 
 void App::initWindow() {
   window = new sf::RenderWindow(sf::VideoMode(config::WINDOW_WIDTH, config::WINDOW_HEIGHT),
@@ -17,10 +18,6 @@ void App::pollEvent() {
         window->close();
         this->isRunning = false;
       }
-      // if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-      //   sorterPtr->shuffleBars();
-      //   sorterPtr->drawBars(*this);
-      // }
     }
     default:
       break;
@@ -33,7 +30,9 @@ void App::drawBuffer(ISorter *sorterPtr) { sorterPtr->drawBars(*window); }
 void App::renderBuffer() {
   pollEvent();
   window->clear();
+  windowMutex->lock();
   drawBuffer(sorterPtr);
+  windowMutex->unlock();
   window->display();
 }
 

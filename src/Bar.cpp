@@ -47,4 +47,9 @@ void Bar::temporaryHighlight(sf::Color color) {
     this->highlight(color);
 }
 
+void Bar::setPosition(int index) {
+    this->position = calculatePosition(index);
+    this->setPosition(position);
+}
+
 sf::RectangleShape* Bar::getShape()  { return &this->rectangle; }

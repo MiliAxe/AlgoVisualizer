@@ -1,5 +1,4 @@
-#ifndef CONFIG_HPP
-#define CONFIG_HPP
+#pragma once
 
 #include <SFML/Graphics/Color.hpp>
 
@@ -15,5 +14,3 @@ namespace config
     extern int BAR_COUNT;
     extern int SORT_DELAY;
 }
-
-#endif // CONFIG_HPP

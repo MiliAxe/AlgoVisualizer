@@ -1,12 +1,15 @@
-#include <Algorithms/BubbleSort.hpp>
-#include <Algorithms/QuickSort.hpp>
+#include "Algorithms/MergeSort.hpp"
+#include <Algorithms/Algorithms.hpp>
 #include <argparse/argparse.hpp>
 #include <config.hpp>
+#include <mutex>
+#include <sys/select.h>
 #include <thread>
 
 argparse::ArgumentParser argParser("AlgoVisualizer");
 SortAlgorithm *selectedAlgorithm;
 Sorter sorter;
+std::mutex windowMutex;
 
 namespace config {
 sf::Color BAR_COLOR;
@@ -22,10 +25,13 @@ int SORT_DELAY;
 
 SortAlgorithm *getSortAlgorithm(std::string algorithmName, Sorter *sorterPtr) {
   if (algorithmName == "QuickSort") {
-    return new QuickSort(sorterPtr);
+    return new QuickSort(sorterPtr, &windowMutex);
   }
   if (algorithmName == "BubbleSort") {
-    return new BubbleSort(sorterPtr);
+    return new BubbleSort(sorterPtr, &windowMutex);
+  }
+  if (algorithmName == "MergeSort") {
+    return new MergeSort(sorterPtr, &windowMutex);
   }
 
   else {
@@ -66,7 +72,7 @@ void initParser() {
       .scan<'d', int>();
   argParser.add_argument("-a", "--algorithm")
       .help("Sorting algorithm to use")
-      .default_value("QuickSort")
+      .default_value("MergeSort")
       .metavar("ALGORITHM");
 }
 
@@ -119,6 +125,7 @@ int main(int argc, char *argv[]) {
     App app = App();
     app.sorterPtr = &sorter;
     app.isRunning = true;
+    app.windowMutex = &windowMutex;
     app.run();
   });
 

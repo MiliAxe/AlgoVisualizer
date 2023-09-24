@@ -23,6 +23,8 @@ public:
   void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
   void setPosition(sf::Vector2f newPosition);
+  
+  void setPosition(int index);
 
   void highlight(sf::Color color);
 
