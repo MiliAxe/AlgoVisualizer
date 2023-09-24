@@ -50,6 +50,10 @@ void initParser() {
       .help("Number of bars to sort")
       .default_value(100)
       .scan<'d', int>();
+  argParser.add_argument("-a", "--algorithm")
+      .help("Sorting algorithm to use")
+      .default_value("MergeSort")
+      .metavar("ALGORITHM");
   argParser.add_argument("-r", "--resolution")
       .help("Window resolution")
       .default_value("800x600")
@@ -70,10 +74,6 @@ void initParser() {
       .help("Thickness of the outline of the bars")
       .default_value(0)
       .scan<'d', int>();
-  argParser.add_argument("-a", "--algorithm")
-      .help("Sorting algorithm to use")
-      .default_value("MergeSort")
-      .metavar("ALGORITHM");
 }
 
 void parseArgs(int argc, char *argv[]) {
