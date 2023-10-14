@@ -3,7 +3,6 @@
 #include <argparse/argparse.hpp>
 #include <config.hpp>
 #include <mutex>
-#include <sys/select.h>
 #include <thread>
 
 argparse::ArgumentParser argParser("AlgoVisualizer");

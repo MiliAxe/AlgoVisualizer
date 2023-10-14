@@ -17,16 +17,22 @@ FetchContent_Declare(
     argparse
     GIT_REPOSITORY https://github.com/p-ranav/argparse.git
 )
+FetchContent_Declare(
+        sfml
+        GIT_REPOSITORY "https://github.com/SFML/SFML.git"
+        GIT_TAG        2.6.0
+)
+FetchContent_MakeAvailable(sfml)
 FetchContent_MakeAvailable(argparse)
 
-find_package(SFML 2.6
-        COMPONENTS
-        graphics
-        window
-        system
-        audio
-        REQUIRED
-)
+#find_package(SFML 2.6
+#        COMPONENTS
+#        graphics
+#        window
+#        system
+#        audio
+#        REQUIRED
+#)
 
 add_executable(AlgoVisualizer)
 target_sources(AlgoVisualizer PRIVATE 
@@ -34,7 +40,7 @@ target_sources(AlgoVisualizer PRIVATE
         src/App.cpp
         src/Bar.cpp
         src/Sorter.cpp
-	src/Utils.cpp
+	    src/Utils.cpp
         src/Algorithms/QuickSort.cpp
         src/Algorithms/BubbleSort.cpp
         src/Algorithms/SortAlgorithm.cpp

@@ -7,4 +7,4 @@ public:
   virtual void drawBars(sf::RenderWindow &window) = 0;
 };
 
-long hexStringToLong(std::string hexString);
+long long hexStringToLong(std::string hexString);

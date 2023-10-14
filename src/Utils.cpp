@@ -1,5 +1,5 @@
 #include <Utils.hpp>
 
-long hexStringToLong(std::string hexString) {
-  return std::stol(hexString.erase(0, 1), nullptr, 16);
+long long hexStringToLong(std::string hexString) {
+  return std::stoll(hexString.erase(0, 1), nullptr, 16);
 }
